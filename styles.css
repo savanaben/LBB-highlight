@@ -1,0 +1,200 @@
+html {
+    font-family: calibri, sans-serif;
+    font-size: 24px;
+}
+
+body {
+    margin: 0;
+    line-height: 1.4;
+}
+
+h1 {
+    margin-top: 0rem;
+}
+
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    margin: 0 auto;
+
+}
+
+button {
+    background-color: white;
+    color: #2478CC;
+    border-radius: 6px;
+    border: 1px solid rgb(183, 183, 183);
+    padding: 12px 24px;
+    font-size: 1rem;
+    margin: 0 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.1s ease;
+}
+
+button:hover {
+    background-color: rgba(143, 143, 143, 0.1);
+}
+
+
+
+
+
+.container {
+    width: 1366px;
+    height: 768px;
+    margin: 0 auto;
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #ccc;
+}
+
+.gray-bar {
+    position: absolute;
+    width: 100%;
+}
+
+.top-bar {
+    height: 60px;
+    background-color: #eeeeee;
+}
+
+.bottom-bar {
+    height: 67px;
+    top: 60px;
+    background-color: #e0e0e0;
+}
+
+.content-wrapper {
+    display: flex;
+    position: absolute;
+    top: 127px;
+    width: 100%;
+    height: calc(100% - 127px);
+    padding: 3rem;
+    box-sizing: border-box;
+}
+
+.left-column, .right-column {
+    flex: 1;
+    box-sizing: border-box;
+}
+
+.left-column {
+    padding: 0 1.5rem 0 0;
+}
+
+.right-column {
+    padding: 0 0 0 1.5rem;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+p {
+    margin: 0px;
+    line-height: 1.5;
+    text-indent: 2rem;
+}
+
+
+.highlightTarget {
+    border: 1px solid transparent;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+
+@keyframes fadeInOut {
+    0%, 50% {
+        background-color: transparent;
+    }
+    25%, 100% {
+        background-color: rgba(125, 189, 255, 0.5);
+    }
+}
+.highlight {
+    animation: fadeInOut 900ms forwards;
+}
+
+
+@keyframes fadeInOut2 {
+    0%, 50% {
+        background-color: transparent;
+    }
+    25%, 100% {
+        background-color: var(--highlight2-bg-color);
+    }
+}
+@keyframes fadeInOutTextColor {
+    0%, 50% {
+        color: black;
+    }
+    25%, 100% {
+        color: white;
+    }
+}
+.highlight2 {
+    animation: fadeInOut2 900ms forwards, fadeInOutTextColor 900ms forwards;
+    color: white;
+}
+
+
+
+@keyframes fadeInOutBorder {
+    0%, 50% {
+        border-color: transparent;
+        background-color: transparent;
+    }
+    25%, 100% {
+        border-color: var(--highlight-border);
+        background-color: var(--highlight-background);
+    }
+}
+
+.highlight3 {
+    animation: fadeInOut 900ms forwards, fadeInOutBorder 900ms forwards;
+    border-width: 1px;
+    border-style: solid;
+    border-color: transparent;
+    box-sizing: border-box;
+}
+
+
+
+@keyframes fadeInOutBottomBorder {
+    0%, 50% {
+        border-bottom-color: transparent;
+        background-color: transparent;
+    }
+    25%, 100% {
+        border-bottom-color: var(--highlight-border);
+        background-color: var(--highlight-background);
+    }
+}
+
+.highlight4 {
+    animation: fadeInOut 900ms forwards, fadeInOutBottomBorder 900ms forwards;
+    border: 1px solid transparent;
+    box-sizing: border-box;
+}
+
+
+
+
+:root {
+    --highlight2-bg-color: #2478CC;
+    --highlight-background: rgba(125, 189, 255, 0.5);
+    --highlight-border: rgb(43, 85, 142);
+}
+
+body.purple-theme {
+    --highlight2-bg-color: #863dda;
+    --highlight-background: rgb(221, 200, 255);
+    --highlight-border: rgb(88, 24, 162);
+}
