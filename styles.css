@@ -198,3 +198,17 @@ body.purple-theme {
     --highlight-background: rgb(221, 200, 255);
     --highlight-border: rgb(88, 24, 162);
 }
+
+
+
+
+/* CSS for the hidden return button */
+.return-button {
+    position: absolute;
+    z-index: 10;
+  }
+  
+  .hidden {
+    visibility: hidden;
+  }
+  

@@ -1,12 +1,46 @@
-function applyHighlightClass(targets, className) {
-    targets.forEach((target) => {
-        target.classList.remove(className);
+let previousActiveElement;
 
-        setTimeout(() => {
-            target.classList.add(className);
-        }, 50);
+
+
+function updateAriaLiveAttributes(targets, value) {
+    targets.forEach((target) => {
+      if (value) {
+        target.setAttribute('aria-atomic', 'true');
+      } else {
+        target.removeAttribute('aria-atomic');
+      }
     });
-}
+  }
+
+
+  function applyHighlightClass(targets, className) {
+    targets.forEach((target) => {
+      target.classList.remove(className);
+  
+      setTimeout(() => {
+        target.classList.add(className);
+      }, 50);
+    });
+    updateAriaLiveAttributes(targets, true);
+  }
+
+
+// Add this function to remove the aria-live attributes when the highlights are turned off
+function removeAriaLiveAttributes() {
+    const targets = document.querySelectorAll('.highlightTarget');
+    updateAriaLiveAttributes(targets, false);
+  }
+  
+  // Update the removeHighlightBtn event listener to call removeAriaLiveAttributes function
+  document.getElementById('removeHighlightBtn').addEventListener('click', () => {
+    const targets = document.querySelectorAll('.highlightTarget');
+    targets.forEach((target) => {
+      target.classList.remove('highlight', 'highlight2', 'highlight3', 'highlight4');
+    });
+    removeAriaLiveAttributes();
+  });
+
+
 
 document.getElementById('highlightBtn').addEventListener('click', () => {
     const targets = document.querySelectorAll('.highlightTarget');
@@ -90,3 +124,198 @@ document.getElementById('removeHighlightBtn').addEventListener('click', () => {
 document.getElementById('toggleColorBtn').addEventListener('click', () => {
     document.body.classList.toggle('purple-theme');
 });
+
+
+
+// ... (all previous code)
+
+// ... (all previous code)
+
+// ... (all previous code)
+
+// Create a single return button
+const returnButton = createReturnButton();
+document.body.appendChild(returnButton);
+
+// Tab event handling for highlight targets
+document.querySelectorAll(".highlightTarget").forEach((highlightTarget) => {
+  highlightTarget.addEventListener("keydown", (event) => {
+    if (event.key === "Tab") {
+      event.preventDefault();
+      
+      returnButton.classList.remove("hidden");
+      returnButton.tabIndex = 0;
+      returnButton.focus();
+
+      // Store the currently focused highlightTarget
+      returnButton.highlightTarget = highlightTarget;
+    }
+  });
+});
+
+// Update returnButton click event
+returnButton.addEventListener("click", () => {
+  if (lastClickedLBB) {
+    lastClickedLBB.focus();
+    returnButton.classList.add("hidden");
+  }
+});
+
+
+
+// Store the last clicked LBB button
+let lastClickedLBB = null;
+document.querySelectorAll(".linkedLBB").forEach((linkedLBB) => {
+  linkedLBB.addEventListener("click", () => {
+    lastClickedLBB = linkedLBB;
+  });
+});
+
+// Function to create a hidden return button
+function createReturnButton() {
+  const returnButton = document.createElement("button");
+  returnButton.className = "return-button hidden";
+  returnButton.innerText = "Return to LBB";
+  returnButton.addEventListener("click", () => {
+    if (lastClickedLBB) {
+      lastClickedLBB.focus();
+      returnButton.classList.add("hidden");
+    }
+  });
+  returnButton.tabIndex = -1;
+
+  return returnButton;
+}
+
+// Create a hidden return button for each highlighted element
+document.querySelectorAll(".highlightTarget").forEach((highlightTarget) => {
+  const returnButtonBefore = createReturnButton();
+  const returnButtonAfter = createReturnButton();
+  highlightTarget.insertAdjacentElement("beforebegin", returnButtonBefore);
+  highlightTarget.insertAdjacentElement("afterend", returnButtonAfter);
+});
+
+// Tab event handling for highlight targets
+document.querySelectorAll(".highlightTarget").forEach((highlightTarget) => {
+  highlightTarget.addEventListener("keydown", (event) => {
+    if (event.key === "Tab") {
+      event.preventDefault();
+
+      const returnButton = event.shiftKey
+        ? highlightTarget.previousElementSibling
+        : highlightTarget.nextElementSibling;
+
+      returnButton.classList.remove("hidden");
+      returnButton.tabIndex = 0;
+      returnButton.focus();
+    }
+  });
+});
+
+// Tab and Shift+Tab event handling for return buttons
+document.querySelectorAll(".return-button").forEach((returnButton) => {
+  returnButton.addEventListener("keydown", (event) => {
+    if (event.key === "Tab") {
+      event.preventDefault();
+      returnButton.classList.add("hidden");
+
+      if (event.shiftKey) {
+        const prevFocusable = getPreviousFocusableElement(returnButton);
+        if (prevFocusable) prevFocusable.focus();
+      } else {
+        const nextFocusable = getNextFocusableElement(returnButton);
+        if (nextFocusable) nextFocusable.focus();
+      }
+    }
+  });
+});
+
+// Get previous focusable element
+function getPreviousFocusableElement(element) {
+  let prev = element.previousElementSibling;
+  while (prev) {
+    if (prev.tabIndex >= 0 && !prev.classList.contains("return-button")) {
+      return prev;
+    }
+    prev = prev.previousElementSibling;
+  }
+  return null;
+}
+
+// Get next focusable element
+function getNextFocusableElement(element) {
+  let next = element.nextElementSibling;
+  while (next) {
+    if (next.tabIndex >= 0 && !next.classList.contains("return-button")) {
+      return next;
+    }
+    next = next.nextElementSibling;
+  }
+  return null;
+}
+
+
+
+
+// Create a hidden return button for each highlighted element
+document.querySelectorAll(".highlightTarget").forEach((highlightTarget) => {
+  const returnButtonBefore = createReturnButton();
+  const returnButtonAfter = createReturnButton();
+  highlightTarget.insertAdjacentElement("beforebegin", returnButtonBefore);
+  highlightTarget.insertAdjacentElement("afterend", returnButtonAfter);
+});
+
+// Tab event handling for highlight targets
+document.querySelectorAll(".highlightTarget").forEach((highlightTarget) => {
+  highlightTarget.addEventListener("keydown", (event) => {
+    if (event.key === "Tab") {
+      event.preventDefault();
+
+      const returnButton = event.shiftKey
+        ? highlightTarget.previousElementSibling
+        : highlightTarget.nextElementSibling;
+
+      returnButton.classList.remove("hidden");
+      returnButton.tabIndex = 0;
+      returnButton.focus();
+    }
+  });
+});
+
+
+
+// Get previous focusable element
+function getPreviousFocusableElement(element) {
+  let prev = element.previousElementSibling;
+  while (prev) {
+    if (prev.tabIndex >= 0 && !prev.classList.contains("return-button")) {
+      return prev;
+    }
+    prev = prev.previousElementSibling;
+  }
+  return null;
+}
+
+// Get next focusable element
+function getNextFocusableElement(element) {
+  let next = element.nextElementSibling;
+  while (next) {
+    if (next.tabIndex >= 0 && !next.classList.contains("return-button")) {
+      return next;
+    }
+    next = next.nextElementSibling;
+  }
+  return null;
+}
+
+// Make return buttons interactive
+document.querySelectorAll(".return-button").forEach((returnButton) => {
+  returnButton.addEventListener("focus", () => {
+    returnButton.classList.remove("hidden");
+  });
+
+  returnButton.addEventListener("blur", () => {
+    returnButton.classList.add("hidden");
+  });
+});
+
