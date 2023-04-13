@@ -190,13 +190,13 @@ p {
 :root {
     --highlight2-bg-color: #2478CC;
     --highlight-background: rgba(125, 189, 255, 0.5);
-    --highlight-border: rgb(43, 85, 142);
+    --highlight-border: rgb(8, 68, 152);
 }
 
 body.purple-theme {
-    --highlight2-bg-color: #863dda;
-    --highlight-background: rgb(221, 200, 255);
-    --highlight-border: rgb(88, 24, 162);
+    --highlight2-bg-color: #803bcf;
+    --highlight-background: rgb(229, 212, 255);
+    --highlight-border: rgb(87, 8, 177);
 }
 
 

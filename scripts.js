@@ -60,6 +60,32 @@ document.getElementById('highlightBtn3').addEventListener('click', () => {
     applyHighlightClass(targets, 'highlight3');
 });
 
+
+document.getElementById('toggleBorderWeightBtn').addEventListener('click', () => {
+    const highlight4Element = document.querySelector('.highlight4');
+    const highlight3Element = document.querySelector('.highlight3');
+    
+    if (highlight4Element) {
+      const currentBorderWeight4 = getComputedStyle(highlight4Element).borderWidth;
+      const newBorderWeight4 = currentBorderWeight4 === '1px' ? '2px' : '1px';
+  
+      document.querySelectorAll('.highlight4').forEach((highlightElement) => {
+        highlightElement.style.borderWidth = newBorderWeight4;
+      });
+    }
+    
+    if (highlight3Element) {
+      const currentBorderWeight3 = getComputedStyle(highlight3Element).borderWidth;
+      const newBorderWeight3 = currentBorderWeight3 === '1px' ? '2px' : '1px';
+  
+      document.querySelectorAll('.highlight3').forEach((highlightElement) => {
+        highlightElement.style.borderWidth = newBorderWeight3;
+      });
+    }
+  });
+  
+
+
 document.getElementById('highlightBtn4').addEventListener('click', () => {
     const targets = document.querySelectorAll('.highlightTarget');
     targets.forEach((target) => target.classList.remove('highlight', 'highlight2', 'highlight3'));
