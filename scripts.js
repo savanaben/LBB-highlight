@@ -60,30 +60,41 @@ document.getElementById('highlightBtn3').addEventListener('click', () => {
     applyHighlightClass(targets, 'highlight3');
 });
 
+
+
+
+
+let borderStateThin = false;
+
+// Helper function to get the border width based on the zoom level
+function getBorderWidth(zoomLevel) {
+    if (zoomLevel < 1) {
+        return borderStateThin ? '1px' : '3px';
+    } else {
+        return borderStateThin ? '1px' : '2px';
+    }
+}
+
 // toggle border weight
 document.getElementById('toggleBorderWeightBtn').addEventListener('click', () => {
-    const highlight4Element = document.querySelector('.highlight4');
-    const highlight3Element = document.querySelector('.highlight3');
-    
-    if (highlight4Element) {
-      const currentBorderWeight4 = getComputedStyle(highlight4Element).borderWidth;
-      const newBorderWeight4 = currentBorderWeight4 === '1px' ? '2px' : '1px';
+    const highlight4Elements = document.querySelectorAll('.highlight4');
+    const highlight3Elements = document.querySelectorAll('.highlight3');
+    const zoomLevel = window.devicePixelRatio;
+    const newBorderWeight = getBorderWidth(zoomLevel);
+
+    highlight4Elements.forEach((highlightElement) => {
+        highlightElement.style.borderWidth = newBorderWeight;
+    });
+
+    highlight3Elements.forEach((highlightElement) => {
+        highlightElement.style.borderWidth = newBorderWeight;
+    });
+
+    borderStateThin = !borderStateThin;
+});
   
-      document.querySelectorAll('.highlight4').forEach((highlightElement) => {
-        highlightElement.style.borderWidth = newBorderWeight4;
-      });
-    }
-    
-    if (highlight3Element) {
-      const currentBorderWeight3 = getComputedStyle(highlight3Element).borderWidth;
-      const newBorderWeight3 = currentBorderWeight3 === '1px' ? '2px' : '1px';
-  
-      document.querySelectorAll('.highlight3').forEach((highlightElement) => {
-        highlightElement.style.borderWidth = newBorderWeight3;
-      });
-    }
-  });
-  
+
+
 
 
 document.getElementById('highlightBtn4').addEventListener('click', () => {

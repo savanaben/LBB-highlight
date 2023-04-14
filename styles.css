@@ -194,9 +194,9 @@ p {
 }
 
 body.purple-theme {
-    --highlight2-bg-color: #803bcf;
-    --highlight-background: rgb(229, 212, 255);
-    --highlight-border: rgb(87, 8, 177);
+    --highlight2-bg-color: #a12ecf;
+    --highlight-background: #f3d5ff;
+    --highlight-border: #a12ecf;
 }
 
 
