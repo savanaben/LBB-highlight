@@ -60,7 +60,7 @@ document.getElementById('highlightBtn3').addEventListener('click', () => {
     applyHighlightClass(targets, 'highlight3');
 });
 
-
+// toggle border weight
 document.getElementById('toggleBorderWeightBtn').addEventListener('click', () => {
     const highlight4Element = document.querySelector('.highlight4');
     const highlight3Element = document.querySelector('.highlight3');
