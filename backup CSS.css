@@ -1,61 +1,3 @@
-:root {
-    --font-color: #0c0c0c;
-    --background-color: #fff;
-    --button-color: white;
-    --button-text-color: #2478CC;
-    --button-hover-color: rgba(143, 143, 143, 0.1);
-    --container-border-color: #ccc;
-    --top-bar-color: #eeeeee;
-    --bottom-bar-color: #e0e0e0;
-    --highlight2-bg-color: #2478CC;
-    --highlight-background: rgba(125, 189, 255, 0.5);
-    --highlight-border: rgb(8, 68, 152);
-    --highlighted-text-color: #fff;
-    
-    --purple-highlight-invert-bg:#a12ecf;
-    --purple-highlight-bg:#f3d5ff;
-    --purple-highlight-border:#a12ecf;
-}
-
-
-body.beige-theme {
-    --font-color: #0c0c0c;
-    --background-color: #F9F9E9;
-    --button-color: #F9F9E9;
-    --button-text-color: #2478CC;
-    --button-hover-color: rgba(143, 143, 143, 0.1);
-    --container-border-color: #ccc;
-    --top-bar-color: #E0E0C7;
-    --bottom-bar-color: #d2d2b8;
-    --highlight2-bg-color: #2478CC;
-    --highlight-background: rgba(125, 189, 255, 0.5);
-    --highlight-border: rgb(8, 68, 152);
-    --highlighted-text-color: #fff;
-    
-    --purple-highlight-invert-bg:#a12ecf;
-    --purple-highlight-bg:#f3d5ff;
-    --purple-highlight-border:#a12ecf;
-}
-
-body.dark-theme {
-    --font-color: #ebebeb;
-    --background-color: #000000;
-    --button-color: #000000;
-    --button-text-color: #7cb8ec;
-    --button-hover-color: rgba(143, 143, 143, 0.5);
-    --container-border-color: #646464;
-    --top-bar-color: #2d2d2d;
-    --bottom-bar-color: #222222;
-    --highlight2-bg-color: #3689ff;
-    --highlight-background: #3F5F80;
-    --highlight-border: rgb(100, 188, 255);
-    --highlighted-text-color: #000000;
-
-    --purple-highlight-invert-bg:#d57ef8;
-    --purple-highlight-bg:#611E80;
-    --purple-highlight-border:#DD90FF;
-}
-
 html {
     font-family: calibri, sans-serif;
     font-size: 24px;
@@ -64,8 +6,8 @@ html {
 body {
     margin: 0;
     line-height: 1.4;
-    background-color: var(--background-color);
-    color: var(--font-color);
+    background-color: #fff;
+    color: #0c0c0c;
 }
 
 h1 {
@@ -82,10 +24,10 @@ h1 {
 }
 
 button {
-    background-color: var(--button-color);
-    color: var(--button-text-color);
+    background-color: white;
+    color: #2478CC;
     border-radius: 6px;
-    border: 1px solid #909090;
+    border: 1px solid rgb(183, 183, 183);
     padding: 12px 24px;
     font-size: 1rem;
     margin: 0 0.5rem;
@@ -94,8 +36,12 @@ button {
 }
 
 button:hover {
-    background-color: var(--button-hover-color);
+    background-color: rgba(143, 143, 143, 0.1);
 }
+
+
+
+
 
 .container {
     width: 1366px;
@@ -106,7 +52,7 @@ button:hover {
     overflow: hidden;
     border-style: solid;
     border-width: 1px;
-    border-color: var(--container-border-color);
+    border-color: #ccc;
 }
 
 .gray-bar {
@@ -116,13 +62,13 @@ button:hover {
 
 .top-bar {
     height: 60px;
-    background-color: var(--top-bar-color);
+    background-color: #eeeeee;
 }
 
 .bottom-bar {
     height: 67px;
     top: 60px;
-    background-color: var(--bottom-bar-color);
+    background-color: #e0e0e0;
 }
 
 .content-wrapper {
@@ -158,23 +104,26 @@ p {
     text-indent: 2rem;
 }
 
+
 .highlightTarget {
     border: 1px solid transparent;
     border-radius: 4px;
     box-sizing: border-box;
 }
 
+
 @keyframes fadeInOut {
     0%, 50% {
         background-color: transparent;
     }
     25%, 100% {
-        background-color: var(--highlight-background);
+        background-color: rgba(125, 189, 255, 0.5);
     }
 }
 .highlight {
     animation: fadeInOut 900ms forwards;
 }
+
 
 @keyframes fadeInOut2 {
     0%, 50% {
@@ -186,16 +135,18 @@ p {
 }
 @keyframes fadeInOutTextColor {
     0%, 50% {
-        color: var(--highlighted-text-color);
+        color: black;
     }
     25%, 100% {
-        color: var(--highlighted-text-color);
+        color: white;
     }
 }
 .highlight2 {
     animation: fadeInOut2 900ms forwards, fadeInOutTextColor 900ms forwards;
-    color: var(--highlighted-text-color);
+    color: white;
 }
+
+
 
 @keyframes fadeInOutBorder {
     0%, 50% {
@@ -216,6 +167,8 @@ p {
     box-sizing: border-box;
 }
 
+
+
 @keyframes fadeInOutBottomBorder {
     0%, 50% {
         border-bottom-color: transparent;
@@ -233,25 +186,31 @@ p {
     box-sizing: border-box;
 }
 
-/* body.purple-theme {
+
+
+
+:root {
+    --highlight2-bg-color: #2478CC;
+    --highlight-background: rgba(125, 189, 255, 0.5);
+    --highlight-border: rgb(8, 68, 152);
+}
+
+body.purple-theme {
     --highlight2-bg-color: #a12ecf;
     --highlight-background: #f3d5ff;
     --highlight-border: #a12ecf;
-} */
-
-body.purple-theme {
-    --highlight2-bg-color: var(--purple-highlight-invert-bg);
-    --highlight-background: var(--purple-highlight-bg);
-    --highlight-border: var(--purple-highlight-border);
 }
+
+
 
 
 /* CSS for the hidden return button */
 .return-button {
     position: absolute;
     z-index: 10;
-}
+  }
   
-.hidden {
+  .hidden {
     visibility: hidden;
-}
+  }
+  

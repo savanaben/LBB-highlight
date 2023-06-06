@@ -1,7 +1,6 @@
 let previousActiveElement;
 
 
-
 function updateAriaLiveAttributes(targets, value) {
     targets.forEach((target) => {
       if (value) {
@@ -164,11 +163,32 @@ document.getElementById('toggleColorBtn').addEventListener('click', () => {
 
 
 
-// ... (all previous code)
+//toggle between color themes, dark and light
 
-// ... (all previous code)
+let currentTheme = 'light-theme'; // Starting theme
 
-// ... (all previous code)
+document.getElementById('toggleThemeBtn').addEventListener('click', () => {
+    // Remove the current theme
+    document.body.classList.remove(currentTheme);
+
+    // Determine the next theme
+    if (currentTheme === 'light-theme') {
+        currentTheme = 'beige-theme';
+    } else if (currentTheme === 'beige-theme') {
+        currentTheme = 'dark-theme';
+    } else if (currentTheme === 'dark-theme') {
+        currentTheme = 'light-theme';
+    }
+
+    // Apply the next theme
+    document.body.classList.add(currentTheme);
+});
+
+
+window.onload = function() {
+  document.body.classList.add('light-theme');
+};
+
 
 // Create a single return button
 const returnButton = createReturnButton();
@@ -213,16 +233,60 @@ function createReturnButton() {
   const returnButton = document.createElement("button");
   returnButton.className = "return-button hidden";
   returnButton.innerText = "Return to LBB";
-  returnButton.addEventListener("click", () => {
-    if (lastClickedLBB) {
-      lastClickedLBB.focus();
-      returnButton.classList.add("hidden");
-    }
-  });
-  returnButton.tabIndex = -1;
 
+  let tabPressCount = 0;
+
+  returnButton.addEventListener("keydown", (event) => {
+      if (event.key === "Tab") {
+          event.preventDefault();
+
+          if (event.shiftKey && tabPressCount === 0) {
+              // Move focus to the previous focusable element in the DOM order.
+              const prevFocusable = getPreviousFocusableElement(returnButton);
+              if (prevFocusable) prevFocusable.focus();
+              return;
+          }
+
+          tabPressCount++;
+
+          if (tabPressCount === 1) {
+              // Change the text and behavior to "Clear Highlight"
+              returnButton.innerText = "Clear Highlight";
+          } else if (tabPressCount === 2) {
+              // Change the text and behavior back to "Return to LBB"
+              returnButton.innerText = "Return to LBB";
+
+              // Reset tabPressCount
+              tabPressCount = 0;
+
+              // Move focus to the next focusable element in the DOM order.
+              const nextFocusable = getNextFocusableElement(returnButton);
+              if (nextFocusable) nextFocusable.focus();
+          }
+      }
+  });
+
+  returnButton.addEventListener("click", () => {
+      if (returnButton.innerText === "Clear Highlight") {
+          // Clear highlights and move focus to the "focusable element before highlights" button
+          removeHighlightClasses();
+          document.querySelector("button").focus(); // assumes "focusable element before highlights" is the first button in the document
+      } else if (lastClickedLBB) {
+          lastClickedLBB.focus();
+      }
+      returnButton.classList.add("hidden");
+  });
+
+  returnButton.tabIndex = -1;
   return returnButton;
 }
+
+
+
+
+
+
+
 
 // Create a hidden return button for each highlighted element
 document.querySelectorAll(".highlightTarget").forEach((highlightTarget) => {
