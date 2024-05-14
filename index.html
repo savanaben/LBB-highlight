@@ -11,14 +11,27 @@
 
 
     <div class="buttons">
+        <select id="lineHeightSelector" aria-label="Select line height">
+            <option value="1.0">Line Height 1.0</option>
+            <option value="1.1">Line Height 1.1</option>
+            <option value="1.4" selected>Line Height 1.4</option>
+        </select>
+        <select id="highlightScopeSelector" aria-label="Select highlight scope">
+            <option value="oneWord">1 Word</option>
+            <option value="fullText">Full Text</option>
+        </select>
+        <div class="vl"></div>
         <button id="highlightBtn" class="linkedLBB" aria-label="Go to and read referenced content.">Current Highlight</button>
-        <button id="highlightBtn2" class="linkedLBB" aria-label="Go to and read referenced content.">Variant 1</button>
-        <button id="highlightBtn3" class="linkedLBB" aria-label="Go to and read referenced content.">Variant 2</button>
-        <button id="highlightBtn4" class="linkedLBB" aria-label="Go to and read referenced content.">Variant 3</button>
+        <button id="highlightBtn2" class="linkedLBB" aria-label="Go to and read referenced content.">Solid</button>
+        <button style="text-decoration:line-through;" id="highlightBtn3" class="linkedLBB" aria-label="Go to and read referenced content.">Borders</button>
+        <button id="highlightBtn4" class="linkedLBB" aria-label="Go to and read referenced content.">Underline 1</button>
+        <button id="highlightBtn5" class="linkedLBB" aria-label="Go to and read referenced content.">Underline 2</button>
+        <div class="vl"></div>
         <button id="toggleBorderWeightBtn" aria-label="Toggle border weight">Toggle Lineweights</button>
         <button id="toggleColorBtn" aria-label="Toggle color theme">Toggle Color</button>
         <button id="toggleThemeBtn">Toggle Theme</button>
         <button id="removeHighlightBtn" aria-label="Remove highlight">Clear Highlight</button>
+        </div>
     </div>
 
 
@@ -27,20 +40,21 @@
         <div class="gray-bar bottom-bar"></div>
         <div class="content-wrapper">
             <div class="left-column">
-                <h1>Title</h1>
-                <button>focusable element before highlights</button> 
-                <p style="margin-top: 0.5rem;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. <span class="highlightTarget" >Curabitur nec odio vitae dolor pellentesque at tortor quis sapien pretium consectetur fringilla.</span> In at tortor quis sapien pretium consectetur. Etiam dignissim, neque et varius suscipit, ipsum odio aliquet enim, in bibendum.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec odio vitae dolor pellentesque fringilla. In at tortor quis sapiea.</p>
-                <p>Lorem ipsumetur adipiscing elit. Curabitur nec odio vitae dolor pellentesque fringilla.</p>
+                <button class="subtle">focusable element before highlights</button> 
+                <h1><span class="fullText">Passage Title</span></h1>
+                <p style="margin-top: 0.5rem;"><span class="fullText">It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness, it was the epoch of belief, it was the epoch of <span class="oneWord">incredulity</span>, it was the season of Light, it was the season of Darkness, it was the spring of hope, it was the winter of despair, we had everything before us.</span></p>
+                <p><span class="fullText">There were a king with a large jaw and a queen with a plain face, on the throne of England; there were a king. </span></p>
+                <p><span class="fullText">In both countries it was clearer than crystal to the lords of the State preserves of loaves and fishes, that things in general were settled for ever.</span></p>
             </div>
             <div class="right-column">
-                <p><span class="highlightTarget" >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec odio vitae dolor pellentesque fringilla. In at tortor quis sapien pretium consectetur. Etiam dignissim, neque et varius suscipit, ipsum odio aliquet enim, in bibendum quam justo at massa.</span></p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec odio vitae dolor pellentesque fringilla. In at tortor quis sapien pretium <span class="highlightTarget">consectetur</span> odio. Etiam dignissim, neque et varius suscipit, ipsum odio aliquet enim.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec odio vitae dolor pellentesque fringilla.</p>
-                <br>
-                <button>focusable element after highlights</button>
+                <h3><span class="fullText">Passage sub-heading</span></h3>
+                <p><span class="fullText">France, less favoured on the whole as to matters spiritual <span class="oneWord">than her sister of the shield and trident,</span> rolled with exceeding smoothness down hill, making paper money and spending it. Under the guidance of her Christian pastors, she entertained herself, besides, with such humane achievements as sentencing a youth to have his hands cut off, his tongue torn out with pincers, and his body burned alive, because he had not kneeled down in the rain to do honour to a dirty procession of monks which passed within his view, at a distance of some fifty or sixty yards. </span></p>
+                
+                <p><span class="fullText">It is likely enough that, rooted in the woods of France and Norway, there were growing trees, when that sufferer was put to death, already marked by the Woodman.</span></p>
+             
+                <button style="margin-top: .2rem;" class="subtle">focusable element after highlights</button>
             </div>
-        </div>
     </div>
 </body>
 </html>
+

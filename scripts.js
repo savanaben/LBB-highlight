@@ -34,62 +34,114 @@ function removeAriaLiveAttributes() {
   document.getElementById('removeHighlightBtn').addEventListener('click', () => {
     const targets = document.querySelectorAll('.highlightTarget');
     targets.forEach((target) => {
-      target.classList.remove('highlight', 'highlight2', 'highlight3', 'highlight4');
+      target.classList.remove('highlight', 'highlight2', 'highlight3', 'highlight4','highlight5');
     });
     removeAriaLiveAttributes();
   });
 
 
+  document.getElementById('lineHeightSelector').addEventListener('change', function() {
+    document.body.style.lineHeight = this.value;
+    document.querySelectorAll('p').forEach(p => p.style.lineHeight = this.value);
+});
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  const oneWordElements = document.querySelectorAll('.oneWord');
+  oneWordElements.forEach(el => {
+      el.classList.add('highlightTarget');
+  });
+});
+
+
+document.getElementById('highlightScopeSelector').addEventListener('change', function() {
+  const currentOption = this.value;
+  const oneWordElements = document.querySelectorAll('.oneWord');
+  const fullTextElements = document.querySelectorAll('.fullText');
+
+  // Reset classes to only their original, manage the 'highlightTarget' class, and remove styles
+  oneWordElements.forEach(el => {
+      el.className = 'oneWord'; // Reset to only original class
+      el.style = ''; // Remove any inline styles
+      if (currentOption === 'oneWord') {
+          el.classList.add('highlightTarget');
+      }
+  });
+
+  fullTextElements.forEach(el => {
+      el.className = 'fullText'; // Reset to only original class
+      el.style = ''; // Remove any inline styles
+      if (currentOption === 'fullText') {
+          el.classList.add('highlightTarget');
+      }
+  });
+});
+
+
+
 
 document.getElementById('highlightBtn').addEventListener('click', () => {
-    const targets = document.querySelectorAll('.highlightTarget');
-    targets.forEach((target) => target.classList.remove('highlight2', 'highlight3', 'highlight4'));
-    applyHighlightClass(targets, 'highlight');
+  const targets = document.querySelectorAll('.highlightTarget');
+  targets.forEach((target) => {
+      target.classList.remove('highlight2', 'highlight3', 'highlight4', 'highlight5');
+      target.style.textDecoration = ''; // Remove any inline text decoration styles
+  });
+  applyHighlightClass(targets, 'highlight');
+
+  // Set the color theme to blue
+  document.body.classList.remove('purple-theme'); // Remove other theme classes if they exist
+  document.body.classList.add('blue-theme'); // Add the blue theme class
 });
 
 document.getElementById('highlightBtn2').addEventListener('click', () => {
-    const targets = document.querySelectorAll('.highlightTarget');
-    targets.forEach((target) => target.classList.remove('highlight', 'highlight3', 'highlight4'));
-    applyHighlightClass(targets, 'highlight2');
+  const targets = document.querySelectorAll('.highlightTarget');
+  targets.forEach((target) => {
+      target.classList.remove('highlight', 'highlight3', 'highlight4', 'highlight5');
+      target.style.textDecoration = ''; // Remove any inline text decoration styles
+  });
+  applyHighlightClass(targets, 'highlight2');
 });
 
 document.getElementById('highlightBtn3').addEventListener('click', () => {
     const targets = document.querySelectorAll('.highlightTarget');
-    targets.forEach((target) => target.classList.remove('highlight', 'highlight2', 'highlight4'));
-    applyHighlightClass(targets, 'highlight3');
+    targets.forEach((target) => {
+      target.classList.remove('highlight', 'highlight2', 'highlight4', 'highlight5');
+      target.style.textDecoration = ''; // Remove any inline text decoration styles
+  });   
+  applyHighlightClass(targets, 'highlight3');
 });
 
 
 
 
 
-let borderStateThin = false;
+let textDecorationThin = false;
 
-// Helper function to get the border width based on the zoom level
-function getBorderWidth(zoomLevel) {
+// Helper function to get the text decoration width based on the zoom level
+function getTextDecorationWidth(zoomLevel) {
     if (zoomLevel < 1) {
-        return borderStateThin ? '1px' : '3px';
+        return textDecorationThin ? '1px' : '3px';
     } else {
-        return borderStateThin ? '1px' : '2px';
+        return textDecorationThin ? '1px' : '2px';
     }
 }
 
-// toggle border weight
+// Toggle text decoration weight
 document.getElementById('toggleBorderWeightBtn').addEventListener('click', () => {
     const highlight4Elements = document.querySelectorAll('.highlight4');
     const highlight3Elements = document.querySelectorAll('.highlight3');
     const zoomLevel = window.devicePixelRatio;
-    const newBorderWeight = getBorderWidth(zoomLevel);
+    const newTextDecorationWeight = getTextDecorationWidth(zoomLevel);
 
     highlight4Elements.forEach((highlightElement) => {
-        highlightElement.style.borderWidth = newBorderWeight;
-    });
+      highlightElement.style.textDecoration = `underline ${newTextDecorationWeight} solid var(--highlight-border)`;
+  });
+  
+  highlight3Elements.forEach((highlightElement) => {
+      highlightElement.style.textDecoration = `underline ${newTextDecorationWeight} solid var(--highlight-border)`;
+  });
 
-    highlight3Elements.forEach((highlightElement) => {
-        highlightElement.style.borderWidth = newBorderWeight;
-    });
-
-    borderStateThin = !borderStateThin;
+    textDecorationThin = !textDecorationThin;
 });
   
 
@@ -98,14 +150,21 @@ document.getElementById('toggleBorderWeightBtn').addEventListener('click', () =>
 
 document.getElementById('highlightBtn4').addEventListener('click', () => {
     const targets = document.querySelectorAll('.highlightTarget');
-    targets.forEach((target) => target.classList.remove('highlight', 'highlight2', 'highlight3'));
+    targets.forEach((target) => target.classList.remove('highlight', 'highlight2', 'highlight3', 'highlight5'));
     applyHighlightClass(targets, 'highlight4');
 });
+
+document.getElementById('highlightBtn5').addEventListener('click', () => {
+  const targets = document.querySelectorAll('.highlightTarget');
+  targets.forEach((target) => target.classList.remove('highlight', 'highlight2', 'highlight3', 'highlight4'));
+  applyHighlightClass(targets, 'highlight5');
+});
+
 
 document.getElementById('removeHighlightBtn').addEventListener('click', () => {
     const targets = document.querySelectorAll('.highlightTarget');
     targets.forEach((target) => {
-        target.classList.remove('highlight', 'highlight2', 'highlight3', 'highlight4');
+        target.classList.remove('highlight', 'highlight2', 'highlight3', 'highlight4', 'highlight5');
     });
 });
 
@@ -151,6 +210,11 @@ document.getElementById('highlightBtn3').addEventListener('click', () => {
 document.getElementById('highlightBtn4').addEventListener('click', () => {
     handleClickHighlightButton('highlight4');
 });
+
+document.getElementById('highlightBtn5').addEventListener('click', () => {
+  handleClickHighlightButton('highlight4');
+});
+
 
 document.getElementById('removeHighlightBtn').addEventListener('click', () => {
     removeHighlightClasses();
@@ -419,4 +483,5 @@ document.querySelectorAll(".return-button").forEach((returnButton) => {
     returnButton.classList.add("hidden");
   });
 });
+
 

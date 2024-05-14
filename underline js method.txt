@@ -1,0 +1,60 @@
+<p>This is a sample paragraph and we want to <span id="highlight">highlight three words highlight three words highlight three words highlight three words highlight three words highlight three words</span> in the middle of it.</p>
+
+
+
+
+
+
+
+#highlight {
+  background-color: yellow; /* Background color for entire highlight */
+  position: relative; /* Establish a stacking context */
+}
+
+.highlight-word {
+  white-space: nowrap; /* Prevent individual words from breaking */
+  position: relative; /* Needed for the absolute positioning of the pseudo-element */
+}
+
+.highlight-word::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 1px; /* Adjust for the desired position of the underline */
+  border-bottom: 2px solid black; /* Simulating underline */
+
+  z-index: 2; /* Ensures it's above the background */
+}
+
+p {
+  line-height:1.2;
+  font-size: 24px;
+}
+
+
+
+
+
+
+
+
+
+function createUnderlines() {
+  const highlight = document.getElementById('highlight');
+  let words = highlight.textContent.split(/\s+/); // Split text into words
+  let newContent = ''; // Container for new HTML content
+
+  words.forEach(word => {
+    newContent += `<span class="highlight-word">${word} </span>`; // Create span for each word
+  });
+
+  highlight.innerHTML = newContent; // Update the HTML content of the highlight span
+}
+
+document.addEventListener('DOMContentLoaded', createUnderlines);
+window.addEventListener('resize', createUnderlines); // Recreate underlines on resize
+
+
+
+

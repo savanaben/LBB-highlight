@@ -8,13 +8,33 @@
     --top-bar-color: #eeeeee;
     --bottom-bar-color: #e0e0e0;
     --highlight2-bg-color: #2478CC;
-    --highlight-background: rgba(125, 189, 255, 0.5);
-    --highlight-border: rgb(8, 68, 152);
+    --highlight-background: rgba(0, 121, 246, 0.26);
+    --highlight-border: #084498;
     --highlighted-text-color: #fff;
     
-    --purple-highlight-invert-bg:#a12ecf;
-    --purple-highlight-bg:#f3d5ff;
+    --highlight-background-gradient: linear-gradient(to bottom, #0079FB 0%, #0079FB 100%);
+
+    --text-decoration-border: var(--highlight-border);
+
+    --purple-highlight-invert-bg:#8f44ad;
+    --purple-highlight-bg:rgba(152, 0, 212, 0.149);
     --purple-highlight-border:#a12ecf;
+
+
+    
+    --purple-linear-gradient: linear-gradient(
+        180deg, 
+        transparent 10%, 
+        rgba(161, 46, 207, 0.2) 10%
+    );
+    --linear-gradient: linear-gradient(
+        180deg, 
+        transparent 10%, 
+        rgba(0, 121, 246, 0.2) 10%
+    );
+
+
+
 }
 
 
@@ -28,13 +48,16 @@ body.beige-theme {
     --top-bar-color: #E0E0C7;
     --bottom-bar-color: #d2d2b8;
     --highlight2-bg-color: #2478CC;
-    --highlight-background: rgba(125, 189, 255, 0.5);
+    --highlight-background: rgba(0, 121, 246, 0.26);
     --highlight-border: rgb(8, 68, 152);
     --highlighted-text-color: #fff;
     
     --purple-highlight-invert-bg:#a12ecf;
     --purple-highlight-bg:#f3d5ff;
     --purple-highlight-border:#a12ecf;
+
+    --text-decoration-border: var(--highlight-border);
+
 }
 
 body.dark-theme {
@@ -46,14 +69,32 @@ body.dark-theme {
     --container-border-color: #646464;
     --top-bar-color: #2d2d2d;
     --bottom-bar-color: #222222;
-    --highlight2-bg-color: #3689ff;
-    --highlight-background: #3F5F80;
+    --highlight2-bg-color: #7eb3ff;
+    --highlight-background: rgba(125, 189, 255, 0.5);
     --highlight-border: rgb(100, 188, 255);
     --highlighted-text-color: #000000;
 
-    --purple-highlight-invert-bg:#d57ef8;
-    --purple-highlight-bg:#611E80;
+    --purple-highlight-invert-bg:#da94f6;
+    /* --purple-highlight-bg:#611E80; */
+    --purple-highlight-bg:rgba(196, 67, 255, 0.4);
+
     --purple-highlight-border:#DD90FF;
+
+    --text-decoration-border: var(--highlight-border);
+
+
+    --purple-linear-gradient: linear-gradient(
+        180deg, 
+        transparent 10%, 
+        rgba(196, 67, 255, 0.4) 10%
+    );
+    --linear-gradient: linear-gradient(
+        180deg, 
+        transparent 10%, 
+        rgba(125, 189, 255, 0.5) 10%
+    );
+
+
 }
 
 html {
@@ -70,6 +111,11 @@ body {
 
 h1 {
     margin-top: 0rem;
+    margin-bottom: 0rem;
+}
+
+h3 {
+    margin: 0rem;
 }
 
 
@@ -81,14 +127,44 @@ h1 {
 
 }
 
+.vl {
+    border-left: 1px solid rgb(138, 138, 138);
+   margin: 0px 6px 0px 6px;
+  }
+
+
+select {
+    background-color: var(--button-color);
+    color: var(--button-text-color);
+    border-radius: 6px;
+    border: 1px solid #909090;
+    padding: 8px 12px;
+    font-size: .8rem;
+    margin: 0 0.1rem;
+    cursor: pointer;
+    transition: background-color 0.1s ease;
+}
+
 button {
     background-color: var(--button-color);
     color: var(--button-text-color);
     border-radius: 6px;
     border: 1px solid #909090;
-    padding: 12px 24px;
-    font-size: 1rem;
-    margin: 0 0.5rem;
+    padding: 8px 12px;
+    font-size: .8rem;
+    margin: 0 0.1rem;
+    cursor: pointer;
+    transition: background-color 0.1s ease;
+}
+
+.subtle {
+    background-color: var(--button-color);
+    color: var(--button-text-color);
+    border-radius: 6px;
+    border: 0px solid #909090;
+    padding: 6px 8px;
+    font-size: .8rem;
+    margin: 0 0rem;
     cursor: pointer;
     transition: background-color 0.1s ease;
 }
@@ -131,7 +207,7 @@ button:hover {
     top: 127px;
     width: 100%;
     height: calc(100% - 127px);
-    padding: 3rem;
+    padding: 2rem;
     box-sizing: border-box;
 }
 
@@ -158,11 +234,23 @@ p {
     text-indent: 2rem;
 }
 
-.highlightTarget {
+/* .highlightTarget {
     border: 1px solid transparent;
     border-radius: 4px;
     box-sizing: border-box;
+    
+} */
+
+
+.highlightTarget {
+    text-decoration: underline 1px transparent; 
+    text-decoration-thickness: 1px;
+    text-underline-offset: 5px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    
 }
+
 
 @keyframes fadeInOut {
     0%, 50% {
@@ -220,18 +308,49 @@ p {
     0%, 50% {
         border-bottom-color: transparent;
         background-color: transparent;
+        text-decoration-color: transparent;
     }
     25%, 100% {
         border-bottom-color: var(--highlight-border);
         background-color: var(--highlight-background);
+        text-decoration-color: var(--text-decoration-border);
     }
 }
 
-.highlight4 {
+/* .highlight4 {
     animation: fadeInOut 900ms forwards, fadeInOutBottomBorder 900ms forwards;
     border: 1px solid transparent;
     box-sizing: border-box;
+} */
+
+.highlight4 {
+    animation: fadeInOut 900ms forwards, fadeInOutBottomBorder 900ms forwards;
 }
+
+
+
+
+
+
+.highlight5 {
+    animation: blinkEffect .5s steps(1, end) 2 forwards; /* Ensure 'forwards' is set to keep the final state */
+}
+
+
+@keyframes blinkEffect {
+    0% {
+        background: transparent;
+        text-decoration-color: transparent;
+    }
+    50%, 100% {
+        background: var(--linear-gradient); 
+        text-decoration-color: var(--text-decoration-border);
+    }
+}
+
+
+
+
 
 /* body.purple-theme {
     --highlight2-bg-color: #a12ecf;
@@ -243,7 +362,11 @@ body.purple-theme {
     --highlight2-bg-color: var(--purple-highlight-invert-bg);
     --highlight-background: var(--purple-highlight-bg);
     --highlight-border: var(--purple-highlight-border);
+    --text-decoration-border:var(--purple-highlight-border);
+    --linear-gradient: var(--purple-linear-gradient);
 }
+
+
 
 
 /* CSS for the hidden return button */
