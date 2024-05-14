@@ -24,6 +24,19 @@ function updateAriaLiveAttributes(targets, value) {
   }
 
 
+  document.getElementById('toggleScaleBtn').addEventListener('click', () => {
+    const containers = document.querySelectorAll('.container');
+    containers.forEach(container => {
+        // Check if the scale is already applied
+        if (container.style.transform === 'scale(0.95)') {
+            container.style.transform = ''; // Remove the transform if it's already applied
+        } else {
+            container.style.transform = 'scale(0.95)'; // Apply the transform if it's not already applied
+        }
+    });
+});
+
+
 // Add this function to remove the aria-live attributes when the highlights are turned off
 function removeAriaLiveAttributes() {
     const targets = document.querySelectorAll('.highlightTarget');

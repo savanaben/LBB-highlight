@@ -25,15 +25,13 @@
     --purple-linear-gradient: linear-gradient(
         180deg, 
         transparent 10%, 
-        rgba(161, 46, 207, 0.2) 10%
+        rgba(152, 0, 212, 0.149) 9%
     );
     --linear-gradient: linear-gradient(
         180deg, 
         transparent 10%, 
-        rgba(0, 121, 246, 0.2) 10%
+        rgba(0, 121, 246, 0.2) 9%
     );
-
-
 
 }
 
@@ -86,12 +84,12 @@ body.dark-theme {
     --purple-linear-gradient: linear-gradient(
         180deg, 
         transparent 10%, 
-        rgba(196, 67, 255, 0.4) 10%
+        rgba(196, 67, 255, 0.4) 9%
     );
     --linear-gradient: linear-gradient(
         180deg, 
         transparent 10%, 
-        rgba(125, 189, 255, 0.5) 10%
+        rgba(125, 189, 255, 0.5) 9%
     );
 
 
