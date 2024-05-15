@@ -48,6 +48,7 @@ function removeAriaLiveAttributes() {
     const targets = document.querySelectorAll('.highlightTarget');
     targets.forEach((target) => {
       target.classList.remove('highlight', 'highlight2', 'highlight3', 'highlight4','highlight5');
+      target.style.textDecoration = ''; // Remove any inline text decoration styles
     });
     removeAriaLiveAttributes();
   });
