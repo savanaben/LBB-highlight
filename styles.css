@@ -51,7 +51,7 @@ body.beige-theme {
     --highlighted-text-color: #fff;
     
     --purple-highlight-invert-bg:#a12ecf;
-    --purple-highlight-bg:#f3d5ff;
+    --purple-highlight-bg:rgba(152, 0, 212, 0.149);
     --purple-highlight-border:#a12ecf;
 
     --text-decoration-border: var(--highlight-border);
